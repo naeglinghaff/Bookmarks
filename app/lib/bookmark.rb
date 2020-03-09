@@ -1,11 +1,9 @@
 class Bookmark
-
-  def initialize
-    @bookmarks = ["This is a bookmark", "This is also a bookmark"]
+  def self.all
+    [
+      "http://www.makersacademy.com",
+      "this is a bookmark",
+      "http://www.google.com"
+     ]
   end
-
-  def all
-    @bookmarks
-  end
-
 end
