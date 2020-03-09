@@ -7,14 +7,23 @@
           null,
           1,
           1,
-          0,
-          null,
-          null,
           1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/student/Documents/projects/week_4/bookmark/app/spec/features/bookmark_display_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1583765001
+    "timestamp": 1583765611
   }
 }
