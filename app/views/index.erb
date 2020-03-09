@@ -3,5 +3,10 @@
   </<head>
   <body>
     <h1>Bookmarks</h1>
+    <ul>
+    <% @bookmark_list.each do |bookmark| %>
+    <li> <%=bookmark%> </li>
+    <%end%>
+    </ul>
     </body>
 </html>
