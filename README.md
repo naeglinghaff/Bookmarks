@@ -45,4 +45,4 @@ I don’t want anyone else to be able to manage my bookmarks
 | Comment                     | add_comment    |
 | User account                | login          |
 
-![Model for Bookmarks app]('./model.png')
+![Model for Bookmarks app](model.png)
