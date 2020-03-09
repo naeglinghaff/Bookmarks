@@ -38,11 +38,15 @@ I don’t want anyone else to be able to manage my bookmarks
 
 ## Domain Model
 
+### Class Model
+
 | Possible Objects            | Methods        |
 | ----------------------------|:-------------: |
 | Bookmark                    | view, add, del |
 | Tag                         | add_tag        |
 | Comment                     | add_comment    |
 | User account                | login          |
+
+### Process Model
 
 ![Model for Bookmarks app](model.png)
