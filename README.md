@@ -45,4 +45,4 @@ I don’t want anyone else to be able to manage my bookmarks
 | Comment                     | add_comment    |
 | User account                | login          |
 
-![Image description](https://app.creately.com/diagram/sdn24jEbKA0/view)
+![Model for Bookmarks app]('./model.png')
