@@ -3,9 +3,9 @@
     "coverage": {
       "/Users/student/Documents/projects/week_4/bookmark/app/app.rb": {
         "lines": [
-          1,
-          1,
           null,
+          null,
+          1,
           1,
           null,
           1,
@@ -21,6 +21,7 @@
       },
       "/Users/student/Documents/projects/week_4/bookmark/app/lib/bookmark.rb": {
         "lines": [
+          null,
           1,
           1,
           null,
@@ -34,6 +35,8 @@
       },
       "/Users/student/Documents/projects/week_4/bookmark/app/spec/bookmark_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -51,6 +54,8 @@
       },
       "/Users/student/Documents/projects/week_4/bookmark/app/spec/features/bookmark_display_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -60,6 +65,6 @@
         ]
       }
     },
-    "timestamp": 1583774967
+    "timestamp": 1583832730
   }
 }

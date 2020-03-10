@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'bookmark'
 
 describe Bookmark do
@@ -5,9 +7,9 @@ describe Bookmark do
     it 'returns bookmarks' do
       bookmarks = Bookmark.all
 
-      expect(bookmarks).to include("http://www.makersacademy.com")
-      expect(bookmarks).to include("this is a bookmark")
-      expect(bookmarks).to include("http://www.google.com")
+      expect(bookmarks).to include('http://www.makersacademy.com')
+      expect(bookmarks).to include('this is a bookmark')
+      expect(bookmarks).to include('http://www.google.com')
     end
   end
 end
