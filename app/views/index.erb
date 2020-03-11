@@ -1,12 +1,15 @@
 <!DOCTYPE html>
+<html>
 <head>
   </<head>
   <body>
     <h1>Bookmarks</h1>
     <ul>
-    <% @bookmark_list.each do |bookmark| %>
-    <li> <%=bookmark%> </li>
+      <%@bookmarks.each do |bookmark| %>
+    <a href="<%=bookmark.url%>">
+    <li> <%=bookmark.title%> </li>
     <%end%>
+    </a>
     </ul>
     </body>
 </html>

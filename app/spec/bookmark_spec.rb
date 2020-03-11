@@ -3,30 +3,26 @@
 require 'bookmark'
 
 describe Bookmark do
+
   describe '.all' do
     it 'returns bookmarks' do
-      # creating connection to the test database
-      connection = PG.connect(dbname: 'bookmark_manager_tests')
+      # adding the test data to the test database
+      bookmark = Bookmark.create(url: "http://www.makersacademy.com", title: "Makers")
+      data = PG.connect(dbname: 'bookmark_manager_tests').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
 
-      # adding the test data
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('http://www.makersacademy.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.destroyallsoftware.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES('http://www.google.com');")
-
-      # run the test
-      bookmarks = Bookmark.all
-
-      expect(bookmarks).to include('http://www.makersacademy.com')
-      expect(bookmarks).to include('http://www.destroyallsoftware.com')
-      expect(bookmarks).to include('http://www.google.com')
+      expect(bookmark).to be_a Bookmark
+      expect(bookmark.id).to eq data.first['id']
+      expect(bookmark.title).to eq 'Makers'
+      expect(bookmark.url). to eq 'http://www.makersacademy.com'
     end
   end
 
   describe '.create' do
     it 'creates a new bookmark' do
-      Bookmark.create(url: 'www.hello.com')
+      bookmark = Bookmark.create(url: 'www.hello.com', title: "this is a test")
 
-      expect(Bookmark.all).to include 'www.hello.com'
+      expect(bookmark.url).to eq 'www.hello.com'
+      expect(bookmark.title).to eq "this is a test"
     end
   end
 end

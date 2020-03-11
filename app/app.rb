@@ -6,7 +6,7 @@ require './lib/bookmark'
 class BookmarkManager < Sinatra::Base
   get '/bookmarks' do
     # calls the class method all on bookmark
-    @bookmark_list = Bookmark.all
+    @bookmarks = Bookmark.all
     erb :index
   end
 
@@ -16,7 +16,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/bookmarks' do
     p params
-    Bookmark.create(url: params['url'])
+    Bookmark.create(url: params[:url], title: params[:title])
     redirect '/bookmarks'
   end
 
