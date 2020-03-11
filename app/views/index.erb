@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  </<head>
+  <link rel="stylesheet" href="style.css" />
+  </head>
   <body>
     <h1>Bookmarks</h1>
     <ul>
       <%@bookmarks.each do |bookmark| %>
-    <a href="<%=bookmark.url%>">
-    <li> <%=bookmark.title%> </li>
-    <%end%>
-    </a>
+    <li>
+      <a href="<%=bookmark.url%>">
+        <%=bookmark.title%></a>
+        <form action="/bookmarks/<%=bookmark.id%>" method="post">
+        <input type="submit" value="Delete">
+        </form>
+    </li>
+      <%end%>
     </ul>
     </body>
 </html>
