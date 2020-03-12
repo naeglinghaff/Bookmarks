@@ -7,7 +7,7 @@
     <h1>Bookmarks</h1>
     <ul>
       <%@bookmarks.each do |bookmark| %>
-    <li class="bookmarks">
+        <li class="bookmark">
       <a href="<%=bookmark.url%>">
         <%=bookmark.title%></a>
         <form action="/bookmarks/<%=bookmark.id%>" method="post">
@@ -20,12 +20,28 @@
         <form action="/bookmarks/<%= bookmark.id%>/comment" method="get">
         <input type="submit" value="Add Comment">
         </form>
-        <%bookmark.comments.each do |comment| %>
-        <p><%=comment['text']%></p>
-        <%end%>
+        <form action="/bookmarks/<%= bookmark.id %>/tags/new" method="get">
+        <input type="submit" value="Add Tag" />
+      </form>
+      <div>
+        <h2>Comments</h2>
+        <ul>
+          <% bookmark.comments.each do |comment| %>
+            <li><%=comment['text']%></li>
+          <% end %>
+        </ul>
+      </div>
+      <div>
+        <h2>Tags</h2>
+        <ul>
+          <% bookmark.tags.each do |tag| %>
+            <li><%= tag.content %></li>
+          <% end %>
+        </ul>
+      </div>
     </li>
-      <%end%>
     </ul>
+      <%end%>
     <p> <%= flash[:notice] %>
     </p>
     </body>

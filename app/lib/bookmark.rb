@@ -2,7 +2,8 @@
 require 'pg'
 require 'uri'
 require_relative './databaseconnection'
-require 'database_helpers'
+require './spec/database_helpers'
+require_relative './tag'
 
 class Bookmark
 
@@ -53,8 +54,15 @@ class Bookmark
      DatabaseConnection.query("select * from comments where bookmark_id = '#{id}';")
   end
 
-  private
+  def self.where(tag_id:)
+    result = DatabaseConnection.query("SELECT id, title, url FROM bookmark_tags INNER JOIN bookmarks ON bookmarks.id = bookmark_tags.bookmark_id WHERE bookmark_tags.tag_id = '#{tag_id}';")
+  end
 
+  def tags(tag_class = Tag)
+    tag_class.where(bookmark_id: id)
+  end
+
+  private
 
   def self.is_url?(url)
     url =~ /\A#{URI::regexp(['http', 'https'])}\z/

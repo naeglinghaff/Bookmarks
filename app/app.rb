@@ -5,6 +5,9 @@ require './lib/bookmark'
 require 'sinatra/flash'
 require 'uri'
 require './lib/comment'
+require_relative './lib/tag'
+require_relative './lib/bookmark_tag'
+
 require_relative './database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
@@ -51,6 +54,22 @@ class BookmarkManager < Sinatra::Base
     Comment.create(bookmark_id: params[:id], comment: params[:comment])
     redirect('/bookmarks')
   end
+
+  get '/bookmarks/:id/tags/new' do
+    @bookmark_id = params[:id]
+    erb :tag_new
+  end
+
+  post '/bookmarks/:id/tags' do
+    tag = Tag.create(content: params[:tag])
+    BookmarkTag.create(bookmark_id: params[:id], tag_id: tag.id)
+    redirect '/bookmarks'
+  end
+
+  get '/tags/:id/bookmarks' do
+
+  end
+
 
   run! if app_file == $PROGRAM_NAME
 end

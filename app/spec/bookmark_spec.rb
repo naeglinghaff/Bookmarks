@@ -4,6 +4,8 @@ require 'bookmark'
 
 describe Bookmark do
 
+  let(:tag_class) { double(:tag_class) }
+
   describe '.all' do
     it 'returns bookmarks' do
       # adding the test data to the test database
@@ -60,4 +62,14 @@ describe Bookmark do
       expect(update_bookmark.id).to eq bookmark.id
     end
   end
+
+  describe '#tags' do
+  it 'calls .where on the Tag class' do
+    bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+    expect(tag_class).to receive(:where).with(bookmark_id: bookmark.id)
+
+    bookmark.tags(tag_class)
+  end
+end
+
 end

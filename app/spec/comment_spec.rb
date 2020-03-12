@@ -16,5 +16,4 @@ describe Comment do
      expect(comment.bookmark_id).to eq bookmark.id
    end
  end
-
 end
