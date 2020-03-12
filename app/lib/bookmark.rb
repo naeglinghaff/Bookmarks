@@ -2,6 +2,7 @@
 require 'pg'
 require 'uri'
 require_relative './databaseconnection'
+require 'database_helpers'
 
 class Bookmark
 
@@ -48,7 +49,12 @@ class Bookmark
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
+  def comments
+     DatabaseConnection.query("select * from comments where bookmark_id = '#{id}';")
+  end
+
   private
+
 
   def self.is_url?(url)
     url =~ /\A#{URI::regexp(['http', 'https'])}\z/
