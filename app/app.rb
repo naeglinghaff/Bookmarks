@@ -2,11 +2,14 @@
 
 require 'sinatra/base'
 require './lib/bookmark'
+require 'sinatra/flash'
+require 'uri'
 require_relative './database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
 
   enable :method_override
+  register Sinatra::Flash
 
   get '/bookmarks' do
     # calls the class method all on bookmark
@@ -19,7 +22,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks' do
-    Bookmark.create(url: params[:url], title: params[:title])
+    flash[:notice] = "You must submit a valid URL." unless Bookmark.create(url: params[:url], title: params[:title])
     redirect '/bookmarks'
   end
 
