@@ -8,7 +8,7 @@ describe Bookmark do
     it 'returns bookmarks' do
       # adding the test data to the test database
       bookmark = Bookmark.create(url: "http://www.makersacademy.com", title: "Makers")
-      data = PG.connect(dbname: 'bookmark_manager_tests').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
+      data = DatabaseConnection.setup('bookmark_manager_tests').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
 
       expect(bookmark).to be_a Bookmark
       expect(bookmark.id).to eq data.first['id']
