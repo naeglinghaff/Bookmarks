@@ -8,7 +8,7 @@ require_relative './database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
 
-  enable :method_override
+  enable :sessions, :method_override
   register Sinatra::Flash
 
   get '/bookmarks' do
@@ -32,7 +32,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   patch '/bookmarks/:id' do
-    Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
+    flash[:notice] = "You must submit a valid URL." unless Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
     redirect('/bookmarks')
   end
 

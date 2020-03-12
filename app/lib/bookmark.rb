@@ -38,6 +38,7 @@ class Bookmark
   end
 
   def self.update(id:, url:, title:)
+    return false unless is_url?(url)
     result = DatabaseConnection.query("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}' RETURNING id, url, title;")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
